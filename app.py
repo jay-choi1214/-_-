@@ -303,7 +303,7 @@ def process_step2(df_combined):
     return result, removed
 
 def process_direct(df_env, df_measured=None):
-    """원클릭: 환경 → 생육 → 수확"""
+    """환경 → 생육 → 수확"""
     progress_bar = st.progress(0)
     status_text = st.empty()
     
@@ -382,11 +382,11 @@ def process_direct(df_env, df_measured=None):
 st.title("🌱 온실 생육·수확 예측 시스템")
 
 # 탭 생성
-tab1, tab2, tab3 = st.tabs(["🚀 원클릭 예측", "📊 1단계: 생육지표", "🌾 2단계: 수확량"])
+tab1, tab2, tab3 = st.tabs(["🚀 예측", "📊 1단계: 생육지표", "🌾 2단계: 수확량"])
 
 # ==================== 원클릭 탭 ====================
 with tab1:
-    st.header("원클릭 수확량 예측")
+    st.header("수확량 예측")
     st.info("환경 데이터만으로 생육지표를 먼저 예측한 후, 수확량까지 한 번에 예측합니다.")
     
     col1, col2 = st.columns(2)
@@ -397,7 +397,7 @@ with tab1:
     with col2:
         growth_file = st.file_uploader("📁 생육지표 실측값 (선택)", type=['xlsx', 'xls'], key="direct_growth")
     
-    if st.button("🚀 원클릭 예측 시작", type="primary", use_container_width=True):
+    if st.button("🚀 예측 시작", type="primary", use_container_width=True):
         if env_file is None:
             st.error("환경 데이터 파일을 업로드해주세요.")
         else:
